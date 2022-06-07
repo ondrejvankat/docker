@@ -1,0 +1,31 @@
+services:
+  phpko:
+    build: ./php
+    volumes:
+      - ../:/var/www/html
+      - ../rewrite.load:/etc/apache2/mods-enabled/rewrite.load
+    ports:
+      - 8074:80
+    networks:
+      - test-sit
+  database:
+    build: ./database
+    volumes:
+      - ./database/import.sql:/docker-entrypoint-initdb.d/import.sql
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: root
+    ports:
+      - 8888:8080
+    networks:
+      - test-sit
+  adminer:
+    image: adminer:standalone
+    ports:
+      - 8889:8080
+    networks:
+      - test-sit
+networks:
+  test-sit:
+    external: true
+

@@ -1,0 +1,7 @@
+/vendor
+composer.lock
+/temp
+!/temp/.gitignore
+/log
+!/log/.gitignore
+

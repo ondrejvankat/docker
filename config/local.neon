@@ -1,0 +1,7 @@
+parameters:
+
+
+database:
+	dsn: 'mysql:host=172.18.0.3;dbname=testovaciDatabase'
+	user:	root
+	password:	root
